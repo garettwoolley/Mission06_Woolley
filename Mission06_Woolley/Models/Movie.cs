@@ -2,7 +2,7 @@ namespace Mission06_Woolley.Models;
 
 public class Movie
 {
-    public int MovieId { get; set; }
+    public int MovieId { get; set; } //comment
     public string Title { get; set; }
     public string Category { get; set; }
     public int Year { get; set; }
