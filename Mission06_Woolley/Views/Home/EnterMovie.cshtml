@@ -1,0 +1,106 @@
+@model Movie
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Enter Movie</title>
+</head>
+<body>
+<h1>Enter Movie Into The Collection</h1>
+<!-- Add Movie Form -->
+<form method="post">
+  <h2>Add a New Movie</h2>
+
+  <!-- Title (required) -->
+  <label asp-for="Title">Title *</label><br />
+  <input asp-for="Title"
+    type="text"
+    id="Title"
+    name="Title"
+    required
+    maxlength="100"
+    placeholder="e.g., Inception"
+  /><br /><br />
+
+  <!-- Category / Genre (required) -->
+  <label asp-for="Category">Category *</label><br />
+  <input
+    asp-for="Category"
+    type="text"
+    id="Category"
+    name="Category"
+    required
+    maxlength="50"
+    placeholder="e.g., Action"
+  /><br /><br />
+
+  <!-- Year (required) -->
+  <label asp-for="Year">Year *</label><br />
+  <input
+    type="number"
+    id="Year"
+    name="Year"
+    required
+    min="1888"
+    max="2100"
+    placeholder="e.g., 2010"
+  /><br /><br />
+
+  <!-- Director (required) -->
+  <label asp-for="Director">Director *</label><br />
+  <input
+    type="text"
+    id="Director"
+    name="Director"
+    required
+    maxlength="60"
+    placeholder="e.g., Christopher Nolan"
+  /><br /><br />
+
+  <!-- Rating (required dropdown: G, PG, PG-13, R) -->
+  <label asp-for="Rating">Rating *</label><br />
+  <select id="Rating" name="Rating" required>
+    <option value="" selected disabled>-- Select --</option>
+    <option value="G">G</option>
+    <option value="PG">PG</option>
+    <option value="PG-13">PG-13</option>
+    <option value="R">R</option>
+  </select><br /><br />
+
+  <!-- Edited (optional yes/no true/false) -->
+  <label asp-for="Edited">Edited (optional)</label><br />
+  <select id="Edited" name="Edited">
+    <option value="" selected>-- Not specified --</option>
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select><br /><br />
+
+  <!-- Lent To (optional) -->
+  <label asp-for="LentTo">Lent To (optional)</label><br />
+  <input
+    type="text"
+    id="LentTo"
+    name="LentTo"
+    maxlength="60"
+    placeholder="e.g., Jake"
+  /><br /><br />
+
+  <!-- Notes (optional, max 25 chars) -->
+  <label asp-for="Notes">Notes (optional, max 25 chars)</label><br />
+  <input
+    type="text"
+    id="Notes"
+    name="Notes"
+    maxlength="25"
+    placeholder="e.g., 4K steelbook"
+  /><br /><br />
+
+  <button type="submit">Add Movie</button>
+</form>
+
+</body>
+</html>
