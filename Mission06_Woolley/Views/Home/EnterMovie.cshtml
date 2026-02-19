@@ -89,6 +89,13 @@
     placeholder="e.g., Jake"
   /><br /><br />
 
+  <!-- Edited (optional yes/no true/false) -->
+  <label asp-for="CopiedToPlex">Copied to Plex</label><br />
+  <select id="CopiedToPlex" name="CopiedToPlex">
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select><br /><br />
+  
   <!-- Notes (optional, max 25 chars) -->
   <label asp-for="Notes">Notes (optional, max 25 chars)</label><br />
   <input

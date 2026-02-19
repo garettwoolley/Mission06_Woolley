@@ -38,4 +38,11 @@ public class HomeController : Controller
         _context.SaveChanges();
         return View("Confirmation", movie);
     }
+    
+    public IActionResult MovieList()
+    {
+       var movies = _context.Movies.ToList();
+
+        return View(movies);
+    }
 }

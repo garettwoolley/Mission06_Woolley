@@ -10,5 +10,7 @@ public class Movie
     public string Rating { get; set; }
     public bool? Edited { get; set; }
     public string? LentTo { get; set; }
+    public bool CopiedToPlex { get; set; }
     public string? Notes { get; set; }
+    
 }
