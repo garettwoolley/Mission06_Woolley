@@ -1,32 +1,29 @@
 @model Movie
 
-@{
-}
-
 <div class="container mt-4 mb-5">
     <div class="card shadow-sm">
         <div class="card-body">
 
             <h1 class="mb-4 text-center">Enter Movie Into The Collection</h1>
 
-            <!-- Add Movie Form -->
             <form method="post">
+
+                <!-- IMPORTANT: allows Edit to work -->
+                <input asp-for="MovieId" type="hidden" />
+
                 <h2 class="h4 mb-4">Add a New Movie</h2>
 
-                <!-- Title (required) -->
+                <!-- Title -->
                 <div class="mb-3">
                     <label asp-for="Title" class="form-label">Title *</label>
                     <input asp-for="Title"
-                           type="text"
-                           id="Title"
-                           name="Title"
+                           class="form-control"
                            required
                            maxlength="100"
-                           placeholder="e.g., Inception"
-                           class="form-control" />
+                           placeholder="e.g., Inception" />
                 </div>
 
-                <!-- Category / Genre (required) -->
+                <!-- Category -->
                 <div class="mb-3">
                     <label asp-for="CategoryId" class="form-label">Category *</label>
                     <select asp-for="CategoryId" class="form-select">
@@ -38,36 +35,33 @@
                     </select>
                 </div>
 
-                <!-- Year (required) -->
+                <!-- Year -->
                 <div class="mb-3">
                     <label asp-for="Year" class="form-label">Year *</label>
-                    <input type="number"
-                           id="Year"
-                           name="Year"
+                    <input asp-for="Year"
+                           type="number"
+                           class="form-control"
                            required
                            min="1888"
                            max="2100"
-                           placeholder="e.g., 2010"
-                           class="form-control" />
+                           placeholder="e.g., 2010" />
                 </div>
 
-                <!-- Director (required) -->
+                <!-- Director -->
                 <div class="mb-3">
                     <label asp-for="Director" class="form-label">Director *</label>
-                    <input type="text"
-                           id="Director"
-                           name="Director"
+                    <input asp-for="Director"
+                           class="form-control"
                            required
                            maxlength="60"
-                           placeholder="e.g., Christopher Nolan"
-                           class="form-control" />
+                           placeholder="e.g., Christopher Nolan" />
                 </div>
 
-                <!-- Rating (required dropdown: G, PG, PG-13, R) -->
+                <!-- Rating -->
                 <div class="mb-3">
                     <label asp-for="Rating" class="form-label">Rating *</label>
-                    <select id="Rating" name="Rating" required class="form-select">
-                        <option value="" selected disabled>-- Select --</option>
+                    <select asp-for="Rating" class="form-select" required>
+                        <option value="" disabled>-- Select --</option>
                         <option value="G">G</option>
                         <option value="PG">PG</option>
                         <option value="PG-13">PG-13</option>
@@ -75,50 +69,49 @@
                     </select>
                 </div>
 
-                <!-- Edited (optional yes/no true/false) -->
+                <!-- Edited -->
                 <div class="mb-3">
                     <label asp-for="Edited" class="form-label">Edited (optional)</label>
-                    <select id="Edited" name="Edited" class="form-select">
-                        <option value="" selected>-- Not specified --</option>
+                    <select asp-for="Edited" class="form-select">
+                        <option value="">-- Not specified --</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
                     </select>
                 </div>
 
-                <!-- Lent To (optional) -->
+                <!-- Lent To -->
                 <div class="mb-3">
                     <label asp-for="LentTo" class="form-label">Lent To (optional)</label>
-                    <input type="text"
-                           id="LentTo"
-                           name="LentTo"
+                    <input asp-for="LentTo"
+                           class="form-control"
                            maxlength="60"
-                           placeholder="e.g., Jake"
-                           class="form-control" />
+                           placeholder="e.g., Jake" />
                 </div>
 
                 <!-- Copied To Plex -->
                 <div class="mb-3">
                     <label asp-for="CopiedToPlex" class="form-label">Copied to Plex</label>
-                    <select id="CopiedToPlex" name="CopiedToPlex" class="form-select">
+                    <select asp-for="CopiedToPlex" class="form-select">
                         <option value="true">Yes</option>
                         <option value="false">No</option>
                     </select>
                 </div>
 
-                <!-- Notes (optional, max 25 chars) -->
+                <!-- Notes -->
                 <div class="mb-4">
                     <label asp-for="Notes" class="form-label">Notes (optional, max 25 chars)</label>
-                    <input type="text"
-                           id="Notes"
-                           name="Notes"
+                    <input asp-for="Notes"
+                           class="form-control"
                            maxlength="25"
-                           placeholder="e.g., 4K steelbook"
-                           class="form-control" />
+                           placeholder="e.g., 4K steelbook" />
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary px-4">Add Movie</button>
+                    <button type="submit" class="btn btn-primary px-4">
+                        Add Movie
+                    </button>
                 </div>
+
             </form>
 
         </div>

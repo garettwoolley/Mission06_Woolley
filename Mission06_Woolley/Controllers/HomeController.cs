@@ -47,9 +47,20 @@ public class HomeController : Controller
         return View(movies);
     }
 
-    public IActionResult Edit()
+    [HttpGet]
+    public IActionResult Edit(int id)
     {
+        var recordToEdit = _context.Movies.Single(x => x.MovieId == id);
+        
         ViewBag.Categories = _context.Categories.OrderBy(x => x.CategoryName).ToList();
-        return View("EnterMovie");
+        return View("EnterMovie", recordToEdit);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Movie updatedInfo)
+    {
+        _context.Movies.Update(updatedInfo);
+        _context.SaveChanges();
+        return RedirectToAction("MovieList");
     }
 }
