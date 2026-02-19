@@ -1,10 +1,18 @@
 namespace Mission06_Woolley.Models;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 public class Movie
 {
+    [Key]
     public int MovieId { get; set; } //comment
     public string Title { get; set; }
-    public string Category { get; set; }
+    
+    [ForeignKey("CategoryId")]
+    public int CategoryId { get; set; }
+    
+    public Categories Category { get; set; }
     public int Year { get; set; }
     public string Director { get; set; }
     public string Rating { get; set; }
