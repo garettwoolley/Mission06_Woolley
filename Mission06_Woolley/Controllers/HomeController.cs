@@ -63,4 +63,20 @@ public class HomeController : Controller
         _context.SaveChanges();
         return RedirectToAction("MovieList");
     }
+
+    [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        var recordToDelete = _context.Movies.Single(x=>x.MovieId == id);
+        
+        return View(recordToDelete);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(Movie recordToDelete)
+    {
+        _context.Movies.Remove(recordToDelete);
+        _context.SaveChanges();
+        return RedirectToAction("MovieList");
+    }
 }
