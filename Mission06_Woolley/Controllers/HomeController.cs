@@ -35,9 +35,19 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult EnterMovie(Movie movie)
     {
-        _context.Movies.Add(movie); //Add record to the database
-        _context.SaveChanges();
-        return View("Confirmation", movie);
+        if (ModelState.IsValid)
+        {
+            _context.Movies.Add(movie); //Add record to the database
+            _context.SaveChanges();
+            return View("Confirmation", movie);
+        }
+        else //Invalid Data
+        {
+            ViewBag.Categories = _context.Categories.OrderBy(x => x.CategoryName).ToList();
+            
+            return View(movie);
+        }
+
     }
     
     public IActionResult MovieList()
@@ -57,8 +67,15 @@ public class HomeController : Controller
     }
 
     [HttpPost]
+    [HttpPost]
     public IActionResult Edit(Movie updatedInfo)
     {
+        if (!ModelState.IsValid)
+        {
+            ViewBag.Categories = _context.Categories.OrderBy(x => x.CategoryName).ToList();
+            return View("EnterMovie", updatedInfo);
+        }
+
         _context.Movies.Update(updatedInfo);
         _context.SaveChanges();
         return RedirectToAction("MovieList");

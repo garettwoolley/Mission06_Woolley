@@ -18,7 +18,6 @@
                     <label asp-for="Title" class="form-label">Title *</label>
                     <input asp-for="Title"
                            class="form-control"
-                           required
                            maxlength="100"
                            placeholder="e.g., Inception" />
                 </div>
@@ -41,7 +40,6 @@
                     <input asp-for="Year"
                            type="number"
                            class="form-control"
-                           required
                            min="1888"
                            max="2100"
                            placeholder="e.g., 2010" />
@@ -52,7 +50,6 @@
                     <label asp-for="Director" class="form-label">Director *</label>
                     <input asp-for="Director"
                            class="form-control"
-                           required
                            maxlength="60"
                            placeholder="e.g., Christopher Nolan" />
                 </div>
@@ -112,6 +109,8 @@
                     </button>
                 </div>
 
+                <div asp-validation-summary="All"></div>
+                
             </form>
 
         </div>
