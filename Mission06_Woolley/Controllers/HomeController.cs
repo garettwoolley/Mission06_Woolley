@@ -46,4 +46,10 @@ public class HomeController : Controller
 
         return View(movies);
     }
+
+    public IActionResult Edit()
+    {
+        ViewBag.Categories = _context.Categories.OrderBy(x => x.CategoryName).ToList();
+        return View("EnterMovie");
+    }
 }
